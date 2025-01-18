@@ -1,2 +1,2 @@
 # Personal
-some image about resume
+Including image that related to my resume.
