@@ -5,9 +5,9 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <section id="main">
+        <section id="main" style="margin: 0 auto;" class = "title">
             <h1>Jonathan Zhou's personal website</h1>
-            <h4>this is the personal website for Jonathan Zhou's resume to show some image of the project I had done</h4>
+            <h4>this is the personal website for Jonathan Zhou's resume</h4>
             <ul>
                 <li>contact info:</li>
                 <li>email:zexi_zhou@hotmail.com</li>
@@ -17,102 +17,257 @@
 
         <section id="link">
             <nav>
-                <h1>Navigatiuon bar</h1>
-                <ul>
-                    <li><a href="#minecraft">MinecraftMod</a></li>
-                    <li><a href="#unity" target="_blank">Unity</a></li>
-                    <li><a href="#unreal" target="_blank">Unreal</a></li>
-                    <li><a href="#others" target="_blank">others</a></li>
-                </ul>
+                <h1>Navigatiuon</h1>
+                <form id="myForm">
+                    <label for="Navigation" class="title">Choose the part you want to view and click "view"</label>
+                    <br>
+                    <input type="radio" id="couese_list" name="Navigation" value="Course">
+                    <label>Course List</label>
+                    <br>
+                    <input type="radio" id="personal_project" name="Navigation" value="minecraft">
+                    <label>Personal project</label>
+                    <br>
+                    <input type="radio" id="personal_project" name="Navigation" value="comment">
+                    <label>Left Comment for me</label>
+                    <br>
+                    <input type="submit" value="view">
+                </form>
+                <br>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      const form = document.getElementById("myForm");
+                      form.addEventListener("submit", function (event) {
+                        event.preventDefault(); 
+                        const select = document.querySelector('input[name="Navigation"]:checked');
+                        if (select) {
+                            const target = document.getElementById(select.value);
+                            target.scrollIntoView({ behavior: "smooth" });
+                        } else {
+                            alert("Please select a part before click view.");
+                        }
+                      });
+                    });
+                  </script>
             </nav>
         </section>
 
-        <section id="minecraft">
-            <h2>Minecraft Mod</h2>
-            <ul>
-                <li>Image below are part of code that converts between Euler angle and quaternion, used to control roll/yaw and pitch of aircraft</li>
-                <li>
-                    <a href="image/MinecraftMod/1.png" target="_blank">
-                    <img src="image/MinecraftMod/1.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/MinecraftMod/2.png" target="_blank">
-                        <img src="image/MinecraftMod/2.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li><br>
+        <h1>Relative Couese List</h1>
+        <section id="Course">
+            <div class="table-wrapper">
+                <figcaption>course</figcaption>
+                <table class = "outer">
+                    <tbody>
+                        <tr>
+                            <td><h3>Course</h3></td>
+                            <td><h3>Professor</h3></td>
+                            <td><h3>Grade</h3></td>
+                            <td><h3>Year of Course</h3></td>
+                        </tr>
+                        <tr>
+                            <td>CMPINF 0401</td>
+                            <td>William Garrison</td>
+                            <td>B</td>
+                            <td>2023-2024 Fall</td>
+                        </tr>
+                        <tr>
+                            <td>CS 0445</td>
+                            <td>Marina Barsky</td>
+                            <td>A</td>
+                            <td>2023-2024 Spring</td>
+                        </tr>
+                        <tr>
+                            <td>CMPINF 0010</td>
+                            <td>Joseph Graham</td>
+                            <td>A</td>
+                            <td>2023-2024 Spring</td>
+                        </tr>
+                        <tr>
+                            <td>CS 0449</td>
+                            <td>Luis Filipe</td>
+                            <td>A</td>
+                            <td>2024-2025 Fall</td>
+                        </tr>
+                        <tr>
+                            <td>CS 0447</td>
+                            <td>Jarrett Billingsley</td>
+                            <td>B</td>
+                            <td>2024-2025 Fall</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <li>screen shoots about game content about A mods about Aircraft Carrier in game</li>
-                <li>
-                    <a href="image/MinecraftMod/3.png" target="_blank">
-                        <img src="image/MinecraftMod/3.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/MinecraftMod/4.png" target="_blank">
-                        <img src="image/MinecraftMod/4.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li>
-            </ul>
-            <br>
+            <div class="table-wrapper">
+                <figcaption>Course number to course name Form</figcaption>
+                <table class = "outer">
+                    <tbody>
+                        <tr>
+                            <td>CMPINF</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>0401</td>
+                                        <td>INTERMEDIATE PROGRAMMING</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0010</td>
+                                        <td>BIG IDEAS IN COMPUTING & INFO</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CS</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>0441</td>
+                                        <td>DISCRETE STRUCTURES FOR CS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0445</td>
+                                        <td>ALGORITHMS & DATA STRUCTURES 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0447</td>
+                                        <td>COMPUTR ORGZTN & ASSMBLY LANG</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0449</td>
+                                        <td>INTRO TO SYSTEMS SOFTWARE</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <br><br><br><br>
+
+        <h1>Personal Project</h1>
+        <section id="minecraft">
+            <fieldset>
+                <legend>Minecraft Mod</legend>
+                <ul>
+                    <li>Image below are part of code that converts between Euler angle and quaternion, used to control roll/yaw and pitch of aircraft</li>
+                    <li>(click to view in large)</li>
+                    <li>
+                        <a href="image/MinecraftMod/1.png" target="_blank">
+                        <img src="image/MinecraftMod/1.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/MinecraftMod/2.png" target="_blank">
+                            <img src="image/MinecraftMod/2.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li><br>
+
+                    <li>screen shoots about game content about A mods about Aircraft Carrier in game</li>
+                    <li>
+                        <a href="image/MinecraftMod/3.png" target="_blank">
+                            <img src="image/MinecraftMod/3.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/MinecraftMod/4.png" target="_blank">
+                            <img src="image/MinecraftMod/4.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li>
+                </ul>
+                <br>
+            </fieldset>
         </section>
 
         <section id="unity">
-            <h2>Unity</h2>
-            <ul>
-                <li>The screen shot of prohject</li><br>
-                <li>Players need to slide either block from enemy or allies, and defeat enemy by using skill of each chess which is highly related to the position of it. Each chess will block each other by their own shape, which need play think about how to move them to correct position</li>
-                <li>
-                    <a href="image/unity/1.png" target="_blank">
-                        <img src="image/unity/1.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li>
+            <fieldset>
+                <legend>Unity</legend>
+                <ul>
+                    <li>The screen shot of prohject</li><br>
+                    <li>Players need to slide either block from enemy or allies, and defeat enemy by using skill of each chess which is highly related to the position of it. Each chess will block each other by their own shape, which need play think about how to move them to correct position</li>
+                    <li>
+                        <a href="image/unity/1.png" target="_blank">
+                            <img src="image/unity/1.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li>
 
-                <br><li>Pieces of code</li>
-                <li>
-                    <a href="image/unity/2.png" target="_blank">
-                        <img src="image/unity/2.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/unity/3.png" target="_blank">
-                        <img src="image/unity/3.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li>
-            </ul>
+                    <br><li>Pieces of code</li>
+                    <li>
+                        <a href="image/unity/2.png" target="_blank">
+                            <img src="image/unity/2.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/unity/3.png" target="_blank">
+                            <img src="image/unity/3.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li>
+                </ul>
+            </fieldset>
         </section>
 
         <section id="unreal">
             <br>
-            <h2>Unreal</h2>
-            <ul>
-                <li>unreal engine project including an boss flight and an level require play moving stealthily</li>
-                <li>
-                    <a href="image/unreal/1.png" target="_blank">
-                        <img src="image/unreal/1.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/unreal/2.png" target="_blank">
-                        <img src="image/unreal/2.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/unreal/1.png" target="_blank">
-                        <img src="image/unreal/2.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li><br>
-                <li>Blue print for proeject</li>
-                <li>
-                    <a href="image/unreal/4.png" target="_blank">
-                        <img src="image/unreal/4.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                    <a href="image/unreal/5.png" target="_blank">
-                        <img src="image/unreal/5.png" alt="Image that opens in a new tab" style="width:500px;height:300px;">
-                    </a>
-                </li><br>
-                <li>Link to game demo:
-                <a href="https://yuz727.itch.io/crows-echo-chamber" target="_blank">Unreal project demo</a></li>
-            </ul>
+            <fieldset>
+                <legend>Unreal</legend>
+                <ul>
+                    <li>unreal engine project including an boss flight and an level require play moving stealthily</li>
+                    <li>
+                        <a href="image/unreal/1.png" target="_blank">
+                            <img src="image/unreal/1.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/unreal/2.png" target="_blank">
+                            <img src="image/unreal/2.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/unreal/1.png" target="_blank">
+                            <img src="image/unreal/2.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li><br>
+                    <li>Blue print for proeject</li>
+                    <li>
+                        <a href="image/unreal/4.png" target="_blank">
+                            <img src="image/unreal/4.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                        <a href="image/unreal/5.png" target="_blank">
+                            <img src="image/unreal/5.png" alt="Image that opens in a new tab" style="width:300px;height:180px;">
+                        </a>
+                    </li><br>
+                    <li>Link to game demo:
+                    <a href="https://yuz727.itch.io/crows-echo-chamber" target="_blank">Unreal project demo</a></li>
+                </ul>
+            </fieldset>
             <br>
         </section>
 
         <section id="others">
-            <h1>Others</h1>
-            <h4>Phaser</h4>
-            <ul>
-                <li>Link to game demo:<a href="https://yaniaa.itch.io/robo-rampage" target="_blank">Unreal project demo</a></li>
-            </ul>
+            <fieldset>
+                <legend>Others</legend>
+                <h4>Phaser</h4>
+                <ul>
+                    <li>Link to game demo:<a href="https://yaniaa.itch.io/robo-rampage" target="_blank">Phaser project demo</a></li>
+                </ul>
+            </fieldset>
+        </section>
+
+        <section id="comment">
+            <h1>Left Comment for me</h1>
+            <form id="comment_input">
+                <label for="message" class="title">Input the comment below and clikc sent:</label>
+                <input type="text" id="message" name="message">
+                <input type="submit" value="sent">
+            </form>
+            <br>
+            <fieldset id="output">
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () 
+                    {
+                        const form = document.getElementById("comment_input");
+                        form.addEventListener("submit", function (event) 
+                        {
+                            event.preventDefault(); 
+                            const inputText = document.getElementById("message").value;
+
+                            const newPara = document.createElement("li");
+                            newPara.textContent = inputText;
+                            document.getElementById("output").appendChild(newPara);});
+                    });
+                  </script>
+            </fieldset>
         </section>
     </body>
 </html>

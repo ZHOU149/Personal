@@ -1,22 +1,10 @@
 html {
-	background-color: hsl(308, 100%, 94%);
+	background-color: hsl(0, 90%, 92%);
 }
 
-a:visited {
-	color: blue;
-}
 
-a:link{
-	color: black;
-}
-
-a:hover {
-	color: red;
-}
-
-a:active
-{
-	color:yellow;
+.title{
+	text-align: center;
 }
 
 ul {
@@ -24,3 +12,23 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+
+table.outer{
+    border: 5px solid rgb(0, 0, 0);
+}
+
+table{
+	border-collapse: collapse; 
+}
+
+th, td {
+	border: 1px solid black;
+	text-align: left;
+	padding: 8px;
+}
+
+.table-wrapper {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px; 
+  }
