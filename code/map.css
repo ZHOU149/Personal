@@ -1,0 +1,75 @@
+#map {
+    height: 600px;
+    width: 100%;
+}
+
+.leaflet-container
+{
+    height: 180px;
+    width: 180px;
+}
+.highlight 
+{
+    color:blue;
+}
+
+table th, table td {
+  text-align: left; /* or right, or center */
+}
+
+#hacc_KPI td, #hacc_KPI th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#hErr_KPI td, #hErr_KPI th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#hErr_ratio_KPI td, #hErr_ratio_KPI th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.custom-black-dot-icon {
+    background-color: black;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 2px black;
+}
+
+.custom-blue-dot-icon {
+    background-color: blue;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 2px black;
+}
+
+.custom-red-dot-icon {
+    background-color: red;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 2px black;
+}
+
+.container {
+            display: flex;              
+            justify-content: center;    
+            align-items: center;  
+            height: 500px;                    
+}
+
+.plot {
+    display: none;
+}
+
+.plot.active {
+    display: block;
+}

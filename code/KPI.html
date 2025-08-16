@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="map.css">
+    <title>KPI</title>
+
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+    <script src="plotly-3.0.1.min.js" charset="utf-8"></script>
+    
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div style = "display: flex; justify-content: center; align-items: center;  ">
+        <button onclick="showPlot('hacc')">Show hacc Plot</button>
+        <button onclick="showPlot('hErr')">Show hErr Plot</button>
+        <button onclick="showPlot('hErr_ratio')">Show hErr ratio Plot</button>
+    </div>
+    <br>
+
+    <div>
+
+        <!-- hErr division -->
+        <div class = "plot active" id = "hErr">
+            <div> 
+                <h2>hErr Time Series Plot</h2>
+                <div id = "hErr_graph"> </div>
+            </div>
+
+            <div style = "float: left; width: 50%;"> 
+                 <h2>hErr CDF Plot</h2>
+                <div id = "hErr_CDF_graph"> </div>
+            </div>
+
+            <div class = "container">
+                <h2>hErr KPI table:</h2>
+                <table id="hErr_KPI" class="display">
+                    <thead>
+                        <th>50%</th>
+                        <th>67%</th>
+                        <th>95%</th>
+                        <th>99%</th>
+                        <th>Max</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- hacc division -->
+        <div class = "plot active" id = "hacc">
+            <div> 
+                <h2>hacc Time Series Plot</h2>
+                <div id = "hacc_graph"> </div>
+            </div>
+
+            <div style = "float: left; width: 50%;"> 
+                <h2>hacc CDF Plot</h2>
+                <div id = "hacc_CDF_graph"> </div>
+            </div>
+
+            <div class = "container">
+                <h2>hacc KPI table:</h2>
+                <table id="hacc_KPI" class="display">
+                    <thead>
+                        <th>50%</th>
+                        <th>67%</th>
+                        <th>95%</th>
+                        <th>99%</th>
+                        <th>Max</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- hErr ratio division -->
+        <div class = "plot active" id = "hErr_ratio">
+            <div> 
+                <h2>hErr ratio Time Series Plot</h2>
+                <div id = "hErr_ratio_graph"></div>
+            </div>
+
+            <div style = "float: left; width: 50%;"> 
+                <h2>hErr ratio CDF Plot</h2>
+                <div id = "hErr_ratio_CDF_graph"> </div>
+            </div>
+
+            <div class = "container">
+                <h2>hErr ratio KPI table:</h2>
+                <table id="hErr_ratio_KPI" class="display">
+                    <thead>
+                        <th>50%</th>
+                        <th>67%</th>
+                        <th>95%</th>
+                        <th>99%</th>
+                        <th>Max</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function showPlot(plotId) {
+            document.querySelectorAll('.plot').forEach(p => p.classList.remove('active'));
+            
+            document.getElementById(plotId).classList.add('active');
+        }
+
+        // KPI table and collect graph data
+        fetch('location_result.json')
+        .then(response => response.json())
+        .then(datas => {
+
+            // get KPI data
+            var KPI_row = document.getElementById("hErr_KPI").insertRow();
+            for (const value of Object.values(datas.KPI.hErr_KPI)) {
+                KPI_row.insertCell().textContent = value.toFixed(2) + " m";
+            }
+
+            var KPI_row = document.getElementById("hacc_KPI").insertRow();
+            for (const value of Object.values(datas.KPI.hacc_KPI)) {
+                KPI_row.insertCell().textContent = value.toFixed(2) + " m";
+            }
+
+            var KPI_row = document.getElementById("hErr_ratio_KPI").insertRow();
+            for (const value of Object.values(datas.KPI.hErr_ratio_KPI)) {
+                KPI_row.insertCell().textContent = value.toFixed(2);
+            }
+
+            var hacc = {
+                x: datas.graph_data.time,
+                y: datas.graph_data.hacc,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hacc_graph', [hacc]);
+
+            var hErr = {
+                x: datas.graph_data.time,
+                y: datas.graph_data.hErr,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hErr_graph', [hErr]);
+
+            var hErr_ratio = {
+                x: datas.graph_data.time,
+                y: datas.graph_data.hErr_ratio,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hErr_ratio_graph', [hErr_ratio]);
+
+            var hacc_CDF = {
+                x: datas.graph_data.hacc_CDF_x,
+                y: datas.graph_data.hacc_CDF_y,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hacc_CDF_graph', [hacc_CDF]);
+
+            var hErr_CDF = {
+                x: datas.graph_data.hErr_CDF_x,
+                y: datas.graph_data.hErr_CDF_y,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hErr_CDF_graph', [hErr_CDF]);
+
+            var hErr_ratio_CDF = {
+                x: datas.graph_data.hErr_ratio_CDF_x,
+                y: datas.graph_data.hErr_ratio_CDF_y,
+                type: 'scatter',
+                mode: 'lines+markers'
+            };
+            Plotly.newPlot('hErr_ratio_CDF_graph', [hErr_ratio_CDF]);
+
+            showPlot("hErr");
+        })
+        .catch(
+            error => {}
+        );
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1"></script>
+</body>
+</html>

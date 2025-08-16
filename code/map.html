@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+
+    <title>WIFI POSITIONING DASHBOARD</title>
+    
+    <link rel="stylesheet" href="map.css">
+</head>
+
+<body>
+   
+    <a href="KPI.html">Go to KPI Page</a>
+    <br>
+
+    <table id="location_table" class="cell-border">
+        <thead>
+            <tr>
+                <th>index</button></th>
+                <th>timestamp</th>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>acc</th>
+                <th>course</th>
+                <th>alt</th>
+                <th>altunc</th>
+                <th>time</th>
+                <th>ground truth</th>
+                <th>error</th>
+            </tr>
+        </thead>
+
+        <tbody id="location_table_body">
+            
+        </tbody>
+
+        <footer>
+            <th><button onclick="showAll()">Show/Hide ALL</button></th>
+        </footer>
+    </table>
+
+    <div id="map"></div>
+
+     <table id="mac_table" class="cell-border">
+        <thead>
+            <tr>
+                <th>index</th>
+                <th>type</th>
+                <th>timestamp</th>
+                <th>latitude</th>
+                <th>longitude</th>
+                <th>hacc</th>
+                <th>reach</th>
+                <th>alt</th>
+                <th>vacc</th>
+                <th>src</th>
+                <th>query age</th>
+            </tr>
+        </thead>
+
+        <tbody id="location_table_body">
+            
+        </tbody>
+    </table>
+
+    <script src="map.js"></script>
+</body>
+</html>
